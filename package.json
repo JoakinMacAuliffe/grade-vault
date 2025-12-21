@@ -12,6 +12,7 @@
   "dependencies": {
     "@neondatabase/neon-js": "^0.1.0-beta.16",
     "@neondatabase/serverless": "^1.0.2",
+    "@vercel/analytics": "^1.6.1",
     "bcryptjs": "^3.0.3",
     "drizzle-orm": "^0.41.0",
     "drizzle-zod": "^0.8.3",
