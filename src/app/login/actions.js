@@ -22,6 +22,6 @@ export async function loginAction(prevState, formData) {
 
         redirect("/");
     } else {
-        return { error: "Clave incorrecta" }
+        return { error: "Wrong password!" }
     }
 }

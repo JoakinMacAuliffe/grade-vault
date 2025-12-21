@@ -38,7 +38,7 @@ export default function Login() {
           />
 
           {state?.error && (
-            <div style={{color: 'red', marginTop: '10px', fontSize:'14px'}}>
+            <div className={styles.error}>
               {state.error}
             </div>
           )}
@@ -47,10 +47,10 @@ export default function Login() {
           <div className={styles.spacer}></div>
 
           <button
-            className={`${styles.submitButton} ${styles.coolerFont}`}
+            className={`${styles.submitButton} ${styles.coolerFont} ${styles.login}`}
             type="submit"
           >
-            Login
+            Enter
           </button>
         </form>
 

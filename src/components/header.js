@@ -1,11 +1,11 @@
 import Link from "next/link";
-import "./header.module.css";
+import styles from "./header.module.css";
 
 export default function Header() {
   return (
-    <header className="header">
-      <div className="header-container">
-        <div className="header-title">Grade Tracker</div>
+    <header className={styles.header}>
+      <div className={styles.headerContainer}>
+        <div className={styles.headerTitle}>Grade Tracker</div>
       </div>
     </header>
   );

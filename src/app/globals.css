@@ -1,16 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Nabla&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Nabla&display=swap");
 
-html {
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
   scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
   background-image: url('/images/DSC_0492.jpg');
   background-size: cover;
   background-position: center;
@@ -20,9 +21,12 @@ body {
   font-family: "Geologica", sans-serif;
   font-size: 16px;
   font-weight: 600;
-
 }
 
 main {
   flex: 1;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
