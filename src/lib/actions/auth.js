@@ -25,3 +25,9 @@ export async function loginAction(prevState, formData) {
         return { error: "Wrong password!" }
     }
 }
+
+export async function logoutAction() {
+    const cookieStore = await cookies();
+    cookieStore.delete("app_password");
+    redirect("/login");
+}

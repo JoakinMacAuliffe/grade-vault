@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { loginAction } from "./actions";
+import { loginAction } from "../../lib/actions/auth";
 import styles from "./login.module.css";
 
 export default function Login() {

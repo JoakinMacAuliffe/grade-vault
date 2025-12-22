@@ -2,19 +2,12 @@
     flex-shrink: 0;
 }
 
-.headerTitle {
-  font-size: 25px;
-  font-weight: 800;
-  text-align: center;
-  align-self: center;
-  color: white;
-  text-shadow: 0 0 10px rgba(215, 215, 215, 0.8);
-}
-
 .headerContainer {
   display: flex;
+  align-items: center;
   justify-content: center;
-  height: 5vh;
+  position: relative;
+  height: 6vh;
   border: 3px solid gray;
   border-top: 0 solid black;
   box-shadow: 4px 4px 0 3px black;
@@ -23,3 +16,39 @@
   backdrop-filter: blur(10px);
 }
 
+.logOutContainer {
+  position: absolute;
+  left: 0.7rem;
+}
+
+.logOut {
+  padding: 0.3rem 1rem;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 2px solid transparent;
+  border-radius: 6px; 
+  background-color: rgb(86, 86, 86);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.logOut:hover {
+
+  transform: translateY(-1px);
+  box-shadow: 2px 2px 0 1px black;
+}
+
+.logOut:active {
+  transform: translateY(0);
+  box-shadow: 1px 1px 0 1px black;
+}
+
+.headerTitle {
+  font-size: 25px;
+  font-weight: 800;
+  text-align: center;
+  color: white;
+  text-shadow: 0 0 10px rgba(215, 215, 215, 0.8);
+}
