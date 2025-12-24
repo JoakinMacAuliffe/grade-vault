@@ -83,6 +83,7 @@ export const semestres = pgTable("semestres", {
   activo: boolean("activo").default(false),
   fechaInicio: date("fechaInicio"),
   fechaFin: date("fechaFin"),
+  numero: smallint("numero")
 });
 
 // SQL relations

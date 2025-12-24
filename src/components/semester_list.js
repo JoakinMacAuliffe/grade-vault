@@ -1,10 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { useActionState } from "react";
+import { createSemesterAction } from "../lib/actions/semester.js";
 import styles from "./semester_list.module.css";
 
 export default function SemesterList({ semesters }) {
+  // useState is used to keep the variable setIsOpen between renders
   const [isOpen, setIsOpen] = useState(false);
+  const [state, formAction] = useActionState(createSemesterAction, null);
+
+  if (state?.success && isOpen) {
+    setIsOpen(false);
+  }
 
   return (
     <>
@@ -19,7 +27,7 @@ export default function SemesterList({ semesters }) {
 
           {semesters.map((semester) => (
             <button key={semester.id} className={styles.semesterBox}>
-              Semestre {semester.numero} - {semester.año}
+              {semester.numero}° Semestre - {semester.año}
             </button>
           ))}
         </div>
@@ -30,10 +38,10 @@ export default function SemesterList({ semesters }) {
         <div className={styles.semesterForm}>
           <div className={styles.formContainer}>
             <h3>Nuevo Semestre</h3>
-            <form>
+            <form action={formAction}>
               <label>
                 Número de Semestre:
-                <input type="number" name="id" required />
+                <input type="number" name="numero" required />
               </label>
               <label>
                 Año:
@@ -47,6 +55,7 @@ export default function SemesterList({ semesters }) {
                 Fecha de Término:
                 <input type="date" name="fechaFin" />
               </label>
+              {state?.error && <p style={{ color: "red" }}>{state.error}</p>}
               <div className={styles.buttonGroup}>
                 <button
                   type="button"
