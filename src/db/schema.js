@@ -28,6 +28,13 @@ export const tipoSeccionEnum = pgEnum("tipo_seccion", [
 
 // SQL tables
 
+export const users = pgTable("users", {
+  id: serial("id").primaryKey(),
+  email: text("email").unique().notNull(),
+  passwordHash: text("passwordHash").notNull(),
+  createdAt: timestamp("createdAt", { withTimezone: true }).defaultNow(),
+})
+
 export const ramos = pgTable("ramos", {
   id: serial("id").primaryKey(),
   titulo: text("titulo").notNull(),
@@ -88,9 +95,16 @@ export const semestres = pgTable("semestres", {
 
 // SQL relations
 
-export const semestresRelations = relations(semestres, ({ many }) => ({
-  // 1 semester has N courses
+export const usersRelations = relations(users, ({ many }) => ({
+  semestres: many(semestres),
+}));
+
+export const semestresRelations = relations(semestres, ({ one, many }) => ({
   ramos: many(ramos),
+  user: one(users, {
+    fields: [semestres.userId],
+    references: [users.id],
+  }),
 }));
 
 export const ramosRelations = relations(ramos, ({ one, many }) => ({
@@ -121,6 +135,12 @@ export const evaluacionesRelations = relations(evaluaciones, ({ one }) => ({
 
 // Validation with Zod
 
+export const insertUserSchema = createInsertSchema(users, {
+  email: z.string().email("Email inválido"),
+  name: z.string().min(1, "Nombre requerido"),
+  passwordHash: z.string().min(1),
+});
+
 export const insertRamoSchema = createInsertSchema(ramos, {
   titulo: z.string().min(1, "Título requerido"),
   codRamo: z.string().length(8, "El código debe tener 8 dígitos"),
@@ -148,6 +168,7 @@ export const insertSemestreSchema = createInsertSchema(semestres, {
 
 // Select schemas (for reading data)
 
+export const selectUserSchema = createSelectSchema(users);
 export const selectRamoSchema = createSelectSchema(ramos);
 export const selectSeccionSchema = createSelectSchema(secciones);
 export const selectEvaluacionSchema = createSelectSchema(evaluaciones);
