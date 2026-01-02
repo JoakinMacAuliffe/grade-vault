@@ -90,7 +90,10 @@ export const semestres = pgTable("semestres", {
   activo: boolean("activo").default(false),
   fechaInicio: date("fechaInicio"),
   fechaFin: date("fechaFin"),
-  numero: smallint("numero")
+  numero: smallint("numero"),
+  userId: integer("userId").notNull().references(() => users.id, {
+    onDelete: "cascade",
+  }),
 });
 
 // SQL relations

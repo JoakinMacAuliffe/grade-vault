@@ -15,6 +15,13 @@
       "when": 1767324838940,
       "tag": "0001_mute_lady_ursula",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1767325430145,
+      "tag": "0002_wet_fat_cobra",
+      "breakpoints": true
     }
   ]
 }
