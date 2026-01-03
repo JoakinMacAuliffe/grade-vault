@@ -1,4 +1,4 @@
-# grade-tracker
+# Grade Vault
 
 WIP project for registering university grades.
 
