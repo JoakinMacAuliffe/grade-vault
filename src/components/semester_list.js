@@ -6,7 +6,6 @@ import { createSemesterAction } from "../lib/actions/semester.js";
 import styles from "./semester_list.module.css";
 
 export default function SemesterList({ semesters }) {
-  // useState is used to keep the variable setIsOpen between renders
   const [isOpen, setIsOpen] = useState(false);
   const [state, formAction] = useActionState(createSemesterAction, null);
 
@@ -15,37 +14,58 @@ export default function SemesterList({ semesters }) {
   }
 
   return (
-    <>
-      <nav className={styles.navbar}>
-        <div className={styles.links}>
-          <button
-            className={styles.semesterBox}
-            onClick={() => setIsOpen(true)}
-          >
-            Insertar nuevo semestre
-          </button>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <h1 className={styles.title}>Mis Semestres</h1>
+        <button
+          className={styles.addButton}
+          onClick={() => setIsOpen(true)}
+        >
+          + Nuevo Semestre
+        </button>
+      </div>
 
-          {semesters.map((semester) => (
-            <button key={semester.id} className={styles.semesterBox}>
-              {semester.numero}° Semestre - {semester.año}
-            </button>
-          ))}
-        </div>
-      </nav>
+      <div className={styles.semesterGrid}>
+        {semesters.length === 0 ? (
+          <p className={styles.emptyMessage}>
+            No hay semestres registrados.
+          </p>
+        ) : (
+          semesters.map((semester) => (
+            <div key={semester.id} className={styles.semesterCard}>
+              <div className={styles.semesterNumber}>
+                {semester.numero}° Semestre
+              </div>
+              <div className={styles.semesterYear}>{semester.año}</div>
+              {semester.fechaInicio && semester.fechaFin && (
+                <div className={styles.semesterDates}>
+                  {new Date(semester.fechaInicio).toLocaleDateString('es-ES', { 
+                    month: 'short', 
+                    day: 'numeric' 
+                  })} - {new Date(semester.fechaFin).toLocaleDateString('es-ES', { 
+                    month: 'short', 
+                    day: 'numeric' 
+                  })}
+                </div>
+              )}
+            </div>
+          ))
+        )}
+      </div>
 
       {/* Full-screen overlay with form */}
       {isOpen && (
-        <div className={styles.semesterForm}>
-          <div className={styles.formContainer}>
+        <div className={styles.semesterForm} onClick={() => setIsOpen(false)}>
+          <div className={styles.formContainer} onClick={(e) => e.stopPropagation()}>
             <h3>Nuevo Semestre</h3>
             <form action={formAction}>
               <label>
                 Número de Semestre:
-                <input type="number" name="numero" required />
+                <input type="number" name="numero" required min="1" />
               </label>
               <label>
                 Año:
-                <input type="number" name="año" required />
+                <input type="number" name="año" required min="2000" max="2100" />
               </label>
               <label>
                 Fecha de Inicio:
@@ -55,7 +75,7 @@ export default function SemesterList({ semesters }) {
                 Fecha de Término:
                 <input type="date" name="fechaFin" />
               </label>
-              {state?.error && <p style={{ color: "red" }}>{state.error}</p>}
+              {state?.error && <p className={styles.errorMessage}>{state.error}</p>}
               <div className={styles.buttonGroup}>
                 <button
                   type="button"
@@ -72,6 +92,6 @@ export default function SemesterList({ semesters }) {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
