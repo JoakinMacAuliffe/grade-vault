@@ -3,7 +3,7 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   position: relative;
 }
 
@@ -23,18 +23,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.75rem;
   background: rgba(0, 0, 0, 0.6);
-  padding: 1.5rem;
-  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: white;
   margin: 0;
@@ -42,29 +42,29 @@
 }
 
 .addButton {
-  padding: 0.75rem 1.5rem;
-  font-size: 1.1rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  border: 3px solid white;
-  border-radius: 8px;
+  border: 2px solid white;
+  border-radius: 6px;
   background-color: rgba(255, 255, 255, 0.15);
   color: white;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 3px 3px 0 2px black;
+  box-shadow: 2px 2px 0 1px black;
   user-select: none;
 }
 
 .addButton:hover {
   background-color: rgba(255, 255, 255, 0.25);
-  transform: translateY(-2px);
-  box-shadow: 5px 5px 0 2px black;
+  transform: translateY(-1px);
+  box-shadow: 3px 3px 0 1px black;
   border-color: #f0f0f0;
 }
 
 .addButton:active {
-  transform: translateY(1px);
-  box-shadow: 2px 2px 0 1px black;
+  transform: translateY(0);
+  box-shadow: 1px 1px 0 1px black;
 }
 
 .semesterGrid {
@@ -76,13 +76,13 @@
 .semesterCard {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 2rem 1.5rem;
-  border: 3px solid gray;
-  border-radius: 12px;
+  gap: 0.35rem;
+  padding: 1.25rem 1rem;
+  border: 2px solid gray;
+  border-radius: 10px;
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.5);
-  box-shadow: 4px 4px 0 3px black;
+  box-shadow: 3px 3px 0 2px black;
   cursor: pointer;
   transition: all 0.2s ease;
   user-select: none;
@@ -90,34 +90,34 @@
 
 .semesterCard:hover {
   background-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-4px);
-  box-shadow: 6px 6px 0 3px black;
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 2px black;
   border-color: lightgray;
 }
 
 .semesterCard:active {
   transform: translateY(0px);
-  box-shadow: 3px 3px 0 2px black;
+  box-shadow: 2px 2px 0 1px black;
 }
 
 .semesterNumber {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: white;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .semesterYear {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: #ffffff;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .semesterDates {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.8);
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 

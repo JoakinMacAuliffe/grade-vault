@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { semesters } from "../../db/schema.js";
 import { db } from "../db.js";
+import { getCurrentUserId } from "../auth-helpers.js";
 
 export async function createSemesterAction(prevState, formData) {
   try {
@@ -10,6 +11,7 @@ export async function createSemesterAction(prevState, formData) {
     const year = parseInt(formData.get("year"));
     const startDate = formData.get("startDate") || null;
     const endDate = formData.get("endDate") || null;
+    const userId = await getCurrentUserId();
 
     // Automatically set if the semester is active or not
 
@@ -24,11 +26,12 @@ export async function createSemesterAction(prevState, formData) {
     }
 
     await db.insert(semesters).values({
-      number,
       year,
+      active,
       startDate,
       endDate,
-      active,
+      number,
+      userId,
     });
 
     revalidatePath("/");
