@@ -18,8 +18,13 @@ export async function loginAction(prevState, formData) {
       redirectTo: "/",
     });
   } catch (error) {
-    if (error.type === "CredentialsSignIn") {
-      return { error: "Invalid email or password" };
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case "CredentialsSignin":
+          return { error: "Invalid email or password" };
+        default:
+          return { error: "Something went wrong" };
+      }
     }
     throw error;
   }
@@ -58,7 +63,7 @@ export async function registerAction(prevState, formData) {
       // Postgres unique violation
       return { error: "Email already exists" };
     }
-    return { error: "Registration failed. Please try again." };
+    throw error;
   }
 }
 
