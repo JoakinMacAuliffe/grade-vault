@@ -1,6 +1,7 @@
 import styles from "./header.module.css";
 import LogoutButton from "./logout_button";
 import { isLoggedIn } from "../lib/auth-helpers";
+import Link from "next/link";
 
 export default async function Header() {
   const loggedIn = await isLoggedIn();
@@ -9,7 +10,7 @@ export default async function Header() {
     <header className={styles.header}>
       <div className={styles.headerContainer}>
         {loggedIn && <LogoutButton />}
-        <div className={styles.headerTitle}>Grade Vault</div>
+        <Link href="/" className={styles.headerTitle}>Grade Vault</Link>
       </div>
     </header>
   );

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useActionState } from "react";
 import { createSemesterAction } from "../lib/actions/semester.js";
 import styles from "./semester_list.module.css";
+import Link from "next/link";
 
 export default function SemesterList({ semesters }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +33,11 @@ export default function SemesterList({ semesters }) {
           <p className={styles.emptyMessage}>No semesters registered.</p>
         ) : (
           semesters.map((semester) => (
-            <div key={semester.id} className={styles.semesterCard}>
+            <Link
+              href={`/semester/${semester.id}`}
+              key={semester.id}
+              className={styles.semesterCard}
+            >
               <div className={styles.semesterNumber}>
                 Semester {semester.number}
               </div>
@@ -50,8 +55,7 @@ export default function SemesterList({ semesters }) {
                   })}
                 </div>
               )}
-            </div>
-          ))
+            </Link>))
         )}
       </div>
 
