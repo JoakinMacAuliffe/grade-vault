@@ -40,3 +40,16 @@ export async function createSemesterAction(prevState, formData) {
     return { error: error.message };
   }
 }
+
+export async function deleteSemesterAction(prevState, formData) {
+  try {
+    const semesterId = parseInt(formData.get("semesterId"));
+
+    await db.delete(semesters).where(eq(semesters.id, semesterId));
+
+    revalidatePath("/");
+    return { success: true };
+  } catch (error) {
+    return { error: error.message };
+  }
+}

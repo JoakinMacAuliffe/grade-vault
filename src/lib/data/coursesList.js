@@ -37,7 +37,7 @@ export const coursesList = [
   { code: "CFG-2", title: "CFG", credits: 5 },
   { code: "CIG-1013", title: "Inglés II", credits: 5 },
 
-  // Practica I (Usually placed after Sem 5 or 6 in progression)
+  // Practica I
   { code: "CIT-4000", title: "Práctica Profesional I", credits: 0 }, 
 
   // Semester 6
